@@ -32,6 +32,7 @@ main{
 }
 /*Sidebar Toggle Styling*/
 div.sidebar-toggle{
+    opacity: 0;
     background: #b5b5b5;
     position: absolute;
     top: 50%;
