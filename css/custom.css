@@ -14,6 +14,10 @@ nav.sidebar{
     -o-transition:  .5s;
     transition:  .5s;
 }
+/*Minimum width so the text element doesn't collapse*/
+.sidebar a{
+    min-width: 200px;
+}
 /*Extra Chevron*/
 #collapse i::after{
     content:'\f053';

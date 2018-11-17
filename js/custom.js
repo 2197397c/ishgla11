@@ -7,6 +7,5 @@ jQuery(document).ready($=>{
     $('#expand').click(e=>{
         sidebar.css("width", "15%");
         $('#expand').css("opacity", "0");
-        console.log($(this).css("background", "red"));
     })
 });
