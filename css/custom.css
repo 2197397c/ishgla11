@@ -38,7 +38,7 @@ nav.sidebar{
 /*Hover animations menu*/
 .sidebar a.nav-link:hover{
     background: #F8F9FA;
-    box-shadow: inset 0 0 5px #868686;
+    /*box-shadow: inset 0 0 5px #868686;*/
     transition: .3s;
 }
 .sidebar a.nav-link{
