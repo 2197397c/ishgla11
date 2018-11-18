@@ -1,3 +1,7 @@
+/*CSS Variables*/
+:root{
+    --sidebar-background: #F8F9FA;
+}
 /*Fixing weird margin */
 .mb-3, .my-3 {
     margin-bottom: 0rem !important;
@@ -5,6 +9,7 @@
 /*Custom Sidebar Styling*/
 nav.sidebar{
     max-height: 100%;
+    height: 100vh;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
     width: 15%;
     overflow: hidden;
@@ -13,10 +18,34 @@ nav.sidebar{
     -ms-transition:  .5s;
     -o-transition:  .5s;
     transition:  .5s;
+    background: var(--sidebar-background);
+}
+.container-fluid{
+    max-height: 100vh;
+}
+/*Hover animations menu*/
+.sidebar a.nav-link:hover{
+    background: #F8F9FA;
+    box-shadow: inset 0 0 5px #868686;
+    transition: .3s;
+}
+.sidebar a.nav-link{
+    transition: .3s;
+}
+/*Logo CSS*/
+#logo{
+    background-image: url('../images/logo_lmao.png');
+    background-color: var(--sidebar-background);
+    min-height: 100px;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
 }
 /*Minimum width so the text element doesn't collapse*/
-.sidebar a{
+.sidebar a.nav-link{
+    display: flex;
+    justify-content: center;
     min-width: 200px;
+    white-space: nowrap;
 }
 /*Extra Chevron*/
 #collapse i::after{
