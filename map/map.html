@@ -25,17 +25,17 @@
 
 			L.marker([55.86,-4.25]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();*/
 			
-			var mymap = L.map('map').setView([55.86, -4.25], 13); 
+			var mymap = L.map('map').setView([55.86, -4.25], 11); 
 			
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-				maxZoom: 11,
-				id: 'mapbox.streets', //mapbox.satellite
+				maxZoom: 18,
+				id: 'mapbox.satellite', //mapbox.streets
 				accessToken: 'pk.eyJ1IjoiMjE5NzM5N2MiLCJhIjoiY2pvc21udXhjMDYwZDNwcWYwZmluOWE5cyJ9.W4EKOi00AuU9DZXgkOHzsg'
 			}).addTo(mymap);
 			
 			
-			var marker = L.marker([55.871465, -4.28853]).addTo(mymap); 
+			var marker = L.marker([55.873487, -4.292634]).addTo(mymap); 
 			var circle = L.circle([55.862344, -4.253426], {
 				color: 'blue',
 				fillColor: '#0020ff',
@@ -48,7 +48,7 @@
 				[55.872277, -4.281685]			
 			],{color:'red'}).addTo(mymap);
 			
-			marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+			marker.bindPopup("<b>Hello world!</b><br>I am <strike>a popup</strike> the Boyd Orr.").openPopup();
 			circle.bindPopup("I am a circle.");
 			polygon.bindPopup("I am a polygon.");
 			
@@ -80,6 +80,13 @@
 				[55.96023232676088809967041015625,-4.3342869915068149566650390625],
 				[55.948512665927410125732421875,-4.321618415415287017822265625],
 			];
+			
+			var circle = L.circle([55.948512665927410125732421875, -4.321618415415287017822265625], {
+				color: '#400080',
+				fillColor: 'purple',
+				fillOpacity: 0.4,
+				radius: 800
+			}).addTo(mymap);
 			
 			var polyline = L.polyline(arrOfPoints, {color: 'purple'}).addTo(mymap);
 			// zoom the map to the polyline
