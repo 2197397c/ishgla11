@@ -26,6 +26,15 @@
 			L.marker([55.86,-4.25]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();*/
 			
 			var mymap = L.map('map').setView([55.86, -4.25], 13); 
+			
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+				maxZoom: 11,
+				id: 'mapbox.streets', //mapbox.satellite
+				accessToken: 'pk.eyJ1IjoiMjE5NzM5N2MiLCJhIjoiY2pvc21udXhjMDYwZDNwcWYwZmluOWE5cyJ9.W4EKOi00AuU9DZXgkOHzsg'
+			}).addTo(mymap);
+			
+			
 			var marker = L.marker([55.871465, -4.28853]).addTo(mymap); 
 			var circle = L.circle([55.862344, -4.253426], {
 				color: 'blue',
@@ -52,13 +61,29 @@
 			}
 
 			mymap.on('click', onMapClick);
+		
+			//Array of latitudes and longitudes for line
+			var arrOfPoints = [
+				[55.9415300376713275909423828125,-4.31796281598508358001708984375],
+				[55.95281333662569522857666015625,-4.32647212408483028411865234375],
+				[55.96147754229605197906494140625,-4.3368350900709629058837890625],
+				[55.9685935266315937042236328125,-4.34819541871547698974609375],
+				[55.98168999888002872467041015625, -4.3488031066954135894775390625],
+				[55.9902570582926273345947265625,-4.351297058165073394775390625],
+				[55.9988843835890293121337890625,-4.36088419519364833831787109375],
+				[56.00869867019355297088623046875,-4.3641647882759571075439453125],
+				[56.01124995388090610504150390625,-4.36722208745777606964111328125],
+				[55.99978954531252384185791015625,-4.36246552504599094390869140625],
+				[55.99224306643009185791015625,-4.3506625480949878692626953125],
+				[55.98413868807256221771240234375,-4.3474294804036617279052734375],
+				[55.96955300308763980865478515625,-4.34837110340595245361328125],
+				[55.96023232676088809967041015625,-4.3342869915068149566650390625],
+				[55.948512665927410125732421875,-4.321618415415287017822265625],
+			];
 			
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-				maxZoom: 18,
-				id: 'mapbox.streets', //mapbox.satellite
-				accessToken: 'pk.eyJ1IjoiMjE5NzM5N2MiLCJhIjoiY2pvc21udXhjMDYwZDNwcWYwZmluOWE5cyJ9.W4EKOi00AuU9DZXgkOHzsg'
-			}).addTo(mymap);
+			var polyline = L.polyline(arrOfPoints, {color: 'purple'}).addTo(mymap);
+			// zoom the map to the polyline
+			//mymap.fitBounds(polyline.getBounds());			
 		</script>
 	</body>
 </html>
