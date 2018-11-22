@@ -1,15 +1,99 @@
-.mb-3, .my-3 {
-
-    margin-bottom: 0rem !important;
-
+/*CSS Variables*/
+:root{
+    /*--sidebar-background: #F8F9FA;*/
+    --sidebar-background: white;
+    overflow: hidden;
 }
-.sidebar{
-    position: fixed;
+/*Connal's embed map element styling*/
+#map{
     height: 100vh;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
 }
+object {
+    height: 100%;
+    width: 100%;
+}
+/*Fixing weird bootstrap margin in index.html*/
+.mb-3, .my-3 {
+    margin-bottom: 0rem !important;
+}
+/*Custom Sidebar Styling*/
+nav.sidebar{
+    max-height: 100%;
+    height: 100vh;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.25);
+    /*box-shadow: 1px 2px 1px rgba(0, 0, 0, 1);*/
+    width: 15%;
+    overflow: hidden;
+    -webkit-transition:  .5s;
+    -moz-transition:  .5s;
+    -ms-transition:  .5s;
+    -o-transition:  .5s;
+    transition:  .5s;
+    background: var(--sidebar-background);
+    z-index: 1;
+}
+.container-fluid{
+    max-height: 100vh;
+}
+/*Hover animations menu*/
+.sidebar a.nav-link:hover{
+    background: #F8F9FA;
+    /*box-shadow: inset 0 0 5px #868686;*/
+    transition: .3s;
+}
+.sidebar a.nav-link{
+    transition: .3s;
+}
+/*Logo CSS*/
+#logo{
+    background-image: url('../images/logo_lmao.png');
+    background-color: var(--sidebar-background);
+    min-height: 100px;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    background-position: center center;
+    width: 100%;
+}
+/*Minimum width so the text element doesn't collapse*/
+.sidebar a.nav-link{
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+    white-space: nowrap;
+}
+/*Extra Chevron*/
 #collapse i::after{
     content:'\f053';
     left: 10px;
     /*width: 1px;*/
+}
+/*Main Content Expansion*/
+main{
+    /*width: 100%;*/
+    flex-grow: 2;
+    /*padding: 1rem;*/
+}
+/*Flexes the row container content*/
+.container-fluid > .row{
+    display: flex;
+}
+/*Sidebar Toggle Styling*/
+div.sidebar-toggle{
+    opacity: 0;
+    /*background: #b5b5b5;*/
+    background: var(--sidebar-background);
+    position: absolute;
+    top: 50%;
+    padding: 1rem;
+    padding-right: .5rem;
+    padding-left: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #00000052;
+    left: -8px;
+    cursor: pointer;
+    transition: .5s;
+}
+/*Extra Chevron again*/
+#expand i::after{
+    content:  '\f054';
 }
