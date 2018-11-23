@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" id="add" href="#">
                             <span data-feather="home"></span>
                             Add Animal
                         </a>
@@ -42,6 +42,7 @@
 
             </div>
         </nav>
+
         <nav class="sidebar-popup">
             <div id="expand" class="sidebar-toggle">
                 <span> <i class="fas fa-chevron-right"></i></span>
@@ -49,6 +50,10 @@
         </nav>
 
         <main role="main" class="">
+            <form id="addAnimal">
+                <i id="closeForm" class="fas fa-times"></i>
+                <input type="file"/>
+            </form>
             <script>
                 function load_home() {
                     document.getElementById("map").innerHTML='<object type="text/html" data="map/map.html" ></object>';

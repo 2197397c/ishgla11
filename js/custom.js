@@ -1,6 +1,4 @@
 let x2js = new X2JS();
-// let textFile = readTextFile("test.txt");
-// console.log(textFile);
 jQuery(document).ready($=>{
     const sidebar = $('nav.sidebar');
     $('#collapse').click(()=>{
@@ -11,6 +9,12 @@ jQuery(document).ready($=>{
         sidebar.css("width", "15%");
         $('#expand').css("opacity", "0");
     });
+    $('#add').click(e=>{
+        $('#addAnimal').toggle();
+    });
+    $('#closeForm').click(e=>{
+        $('#addAnimal').toggle();
+    })
     let gpxData;
     $.ajax({
         url: 'map/Activities/activity_1927428247.gpx',

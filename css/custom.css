@@ -97,3 +97,32 @@ div.sidebar-toggle{
 #expand i::after{
     content:  '\f054';
 }
+/* Upload file form */
+#addAnimal{
+    display: none;
+    --padding-size: 3rem;
+    position: absolute;
+    padding: var(--padding-size);
+    background: white;
+    left: calc(50% - var(--padding-size));
+    top: calc(50% - var(--padding-size));
+    box-shadow: 0 0 0 100vw rgba(0,0,0,.5);
+    z-index: 1;
+    transition: .3s;
+}
+/* Preventing clicking elsewhere */
+#addAnimal::after{
+    position:fixed;
+    content: '';
+    width: 100vw; height: 100vh;
+    top: 0; left: 0;
+    z-index: -1;
+    transition: .3s;
+}
+/* Toggle close add animal button */
+#closeForm{
+    position: absolute;
+    top: 0; right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
