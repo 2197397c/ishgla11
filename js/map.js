@@ -130,21 +130,21 @@ mymap.on('click', onMapClick);
     });*/
 
     function gpx(file) {
-      return $.ajax({
-          url: file,
-          async: false,
-          cache: false,
-          dataType: 'text',
-          success: e => {
-              return e;
-          },
-          error: e => console.log(e)
-      });
+        let tempData;
+          $.ajax({
+              url: file,
+              async: false,
+              // cache: false,
+              dataType: 'text',
+              success: e => {
+                  // console.log(e);
+                  tempData = e;
+              },
+              error: e => console.log(e)
+          });
+          return tempData;
     }
 
-
-    let jsonObj = x2js.xml_str2json(gpxData);
-    console.log(jsonObj);
     function getPTS(arr){
         let temp = [];
         let n = 0;
@@ -152,38 +152,15 @@ mymap.on('click', onMapClick);
         data.forEach((i,v) => {
             // console.log(i);
             temp[n++] = [parseFloat(i['_lat']), parseFloat(i['_lon'])];
-            console.log(data.length -1 );
+            // console.log(data.length -1 );
         });
         temp.splice('length', 1);
         return temp;
     }
-    console.log(arrOfPoints);
-    // console.log(getPTS(jsonObj));
-    let points = getPTS(jsonObj);
-    var new_line = L.polyline(points, {color: 'salmon'}).addTo(mymap);
 
-
-    $.ajax({
-        url: 'map/Activities/activity_2041180865.gpx',
-        async: false,
-        cache: false,
-        dataType: 'text',
-        success: e => {
-            // console.log(e);
-            gpxData = e;
-        },
-        error: e => console.log(e)
-    });
-    jsonObj = x2js.xml_str2json(gpxData);
-    points = getPTS(jsonObj);
-    new_line = L.polyline(points, {color: 'cyan'}).addTo(mymap);
-
+    let Datas = gpx("map/Activities/activity_2157967385.gpx");
     jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2157967385.gpx"));
-    points = getPTS(jsonObj);
-    new_line = L.polyline(points, {color: 'jade'}).addTo(mymap);
-
-
-
-
+    let points = getPTS(jsonObj);
+    let new_line = L.polyline(points, {color: 'greenyellow'}).addTo(mymap);
 
 });
