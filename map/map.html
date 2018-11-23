@@ -81,6 +81,19 @@
 				[55.948512665927410125732421875,-4.321618415415287017822265625],
 			];
 			
+			var arrOfPoints2 = [
+				[56.63202040828764438629150390625,-4.828295409679412841796875],
+				[56.62518530152738094329833984375,-4.8039421252906322479248046875],
+				[56.6058813594281673431396484375,-4.80683949775993824005126953125],
+				[56.58561668358743190765380859375,-4.80151548050343990325927734375],
+				[56.572859175503253936767578125,-4.7990568168461322784423828125],
+				[56.55988122336566448211669921875,-4.8056392930448055267333984375],
+				[56.54567909426987171173095703125,-4.8148396052420139312744140625],
+				[56.54540249146521091461181640625,-4.80772647075355052947998046875],
+			];
+			
+			var polyline = L.polyline(arrOfPoints, {color: '#400080'}).addTo(mymap);
+			
 			var circle2 = L.circle([55.948512665927410125732421875, -4.321618415415287017822265625], {
 				color: '#400080',
 				fillColor: 'purple',
@@ -88,7 +101,14 @@
 				radius: 800
 			}).addTo(mymap);
 			
-			var polyline = L.polyline(arrOfPoints, {color: 'purple'}).addTo(mymap);
+			var polyline2 = L.polyline(arrOfPoints2, {color: 'yellow'}).addTo(mymap);
+			
+			var circle3 = L.circle([56.54540249146521091461181640625,-4.80772647075355052947998046875], {
+				color: 'yellow',
+				fillColor: '#aaaa00',
+				fillOpacity: 0.4,
+				radius: 1600
+			}).addTo(mymap);
 			
 			// zoom the map to the polyline		
 			polyline.on('click', function() {
@@ -99,9 +119,19 @@
 				mymap.fitBounds(circle2.getBounds());
 			});
 			
+			polyline2.on('click', function() {
+				mymap.fitBounds(polyline2.getBounds());
+			});
+			
+			circle3.on('click', function() {
+				mymap.fitBounds(circle3.getBounds());
+			});
+			
+			
+			/*
 			$("#bounds").click(function(){
 				mymap.fitBounds(polyline.getBounds());
-			});
+			});*/
 			
 		</script>
 		<button id="bounds">Bounds</button>
