@@ -2,14 +2,6 @@ let x2js = new X2JS();
 
 jQuery(document).ready($=>{
 
-    /*var map = L.map('map').setView([55.86, -4.25], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.marker([55.86,-4.25]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();*/
-
     var mymap = L.map('map').setView([55.86, -4.25], 11);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -18,7 +10,6 @@ jQuery(document).ready($=>{
         id: 'mapbox.streets', //mapbox.satellite
         accessToken: 'pk.eyJ1IjoiMjE5NzM5N2MiLCJhIjoiY2pvc21udXhjMDYwZDNwcWYwZmluOWE5cyJ9.W4EKOi00AuU9DZXgkOHzsg'
     }).addTo(mymap);
-
 
     var marker = L.marker([55.873487, -4.292634]).addTo(mymap);
     var circle = L.circle([55.862344, -4.253426], {
@@ -37,8 +28,6 @@ jQuery(document).ready($=>{
     circle.bindPopup("I am a circle.");
     polygon.bindPopup("I am a polygon.");
 
-    //var popup = L.popup().setLatLng([55.857395, -4.244156]).setContent("I am a standalone popup.").openOn(mymap);
-
     var popup = L.popup();
 
     function onMapClick(e) {
@@ -47,7 +36,55 @@ jQuery(document).ready($=>{
 
 mymap.on('click', onMapClick);
 
-//Array of latitudes and longitudes for line
+
+let gpxData;
+
+function gpx(file) {
+    let tempData;
+      $.ajax({
+          url: file,
+          async: false,
+          // cache: false,
+          dataType: 'text',
+          success: e => {
+              tempData = e;
+          },
+          error: e => console.log(e)
+      });
+      return tempData;
+}
+
+function getPTS(arr){
+    let temp = [];
+    let n = 0;
+    let data = arr['gpx']['trk']['trkseg']['trkpt'];
+    data.forEach((i,v) => {
+        temp[n++] = [parseFloat(i['_lat']), parseFloat(i['_lon'])];
+    });
+    temp.splice('length', 1);
+    return temp;
+}
+
+//let Datas = gpx("map/Activities/activity_2157967385.gpx");
+jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2157967385.gpx"));
+let points = getPTS(jsonObj);
+let new_line = L.polyline(points, {color: 'greenyellow'}).addTo(mymap);
+
+//Datas = gpx("map/Activities/activity_2041180865.gpx");
+jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2041180865.gpx"));
+points = getPTS(jsonObj);
+new_line = L.polyline(points, {color: 'cyan'}).addTo(mymap);
+
+jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_1927428247.gpx"));
+points = getPTS(jsonObj);
+new_line = L.polyline(points, {color: 'purple'}).addTo(mymap);
+
+jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_1939704174.gpx"));
+points = getPTS(jsonObj);
+new_line = L.polyline(points, {color: 'gold'}).addTo(mymap);
+
+
+    //Array of latitudes and longitudes for line
     var arrOfPoints = [
         [55.9415300376713275909423828125,-4.31796281598508358001708984375],
         [55.95281333662569522857666015625,-4.32647212408483028411865234375],
@@ -95,7 +132,7 @@ mymap.on('click', onMapClick);
         radius: 1600
     }).addTo(mymap);
 
-// zoom the map to the polyline
+    // zoom the map on each GPX
     polyline.on('click', function() {
         mymap.fitBounds(polyline.getBounds());
     });
@@ -117,50 +154,7 @@ mymap.on('click', onMapClick);
     });
 
 
-    let gpxData;
-    /*$.ajax({
-        url: 'map/Activities/activity_2011170049.gpx',
-        async: false,
-        cache: false,
-        dataType: 'text',
-        success: e => {
-            gpxData = e;
-        },
-        error: e => console.log(e)
-    });*/
 
-    function gpx(file) {
-        let tempData;
-          $.ajax({
-              url: file,
-              async: false,
-              // cache: false,
-              dataType: 'text',
-              success: e => {
-                  // console.log(e);
-                  tempData = e;
-              },
-              error: e => console.log(e)
-          });
-          return tempData;
-    }
 
-    function getPTS(arr){
-        let temp = [];
-        let n = 0;
-        let data = arr['gpx']['trk']['trkseg']['trkpt'];
-        data.forEach((i,v) => {
-            // console.log(i);
-            temp[n++] = [parseFloat(i['_lat']), parseFloat(i['_lon'])];
-            // console.log(data.length -1 );
-        });
-        temp.splice('length', 1);
-        return temp;
-    }
-
-    let Datas = gpx("map/Activities/activity_2157967385.gpx");
-    jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2157967385.gpx"));
-    let points = getPTS(jsonObj);
-    let new_line = L.polyline(points, {color: 'greenyellow'}).addTo(mymap);
 
 });
