@@ -15,7 +15,7 @@ jQuery(document).ready($=>{
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
-        id: 'mapbox.satellite', //mapbox.streets
+        id: 'mapbox.streets', //mapbox.satellite
         accessToken: 'pk.eyJ1IjoiMjE5NzM5N2MiLCJhIjoiY2pvc21udXhjMDYwZDNwcWYwZmluOWE5cyJ9.W4EKOi00AuU9DZXgkOHzsg'
     }).addTo(mymap);
 
@@ -33,19 +33,19 @@ jQuery(document).ready($=>{
         [55.872277, -4.281685]
     ],{color:'red'}).addTo(mymap);
 
-    marker.bindPopup("<b>Hello world!</b><br>I am <strike>a popup</strike> the Boyd Orr.").openPopup();
+    marker.bindPopup("<b>Hello world!</b><br>I am <strike>a popup</strike> the Boyd Orr.");
     circle.bindPopup("I am a circle.");
     polygon.bindPopup("I am a polygon.");
 
-    var popup = L.popup().setLatLng([55.857395, -4.244156]).setContent("I am a standalone popup.").openOn(mymap);
+    //var popup = L.popup().setLatLng([55.857395, -4.244156]).setContent("I am a standalone popup.").openOn(mymap);
 
     var popup = L.popup();
 
-    /*function onMapClick(e) {
+    function onMapClick(e) {
         popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
-    }*/
+    }
 
-//mymap.on('click', onMapClick);
+mymap.on('click', onMapClick);
 
 //Array of latitudes and longitudes for line
     var arrOfPoints = [
@@ -118,18 +118,31 @@ jQuery(document).ready($=>{
 
 
     let gpxData;
-    $.ajax({
+    /*$.ajax({
         url: 'map/Activities/activity_2011170049.gpx',
         async: false,
         cache: false,
         dataType: 'text',
         success: e => {
-            // console.log(e);
             gpxData = e;
         },
         error: e => console.log(e)
-    });
-    // console.log(gpxData);
+    });*/
+
+    function gpx(file) {
+      return $.ajax({
+          url: file,
+          async: false,
+          cache: false,
+          dataType: 'text',
+          success: e => {
+              return e;
+          },
+          error: e => console.log(e)
+      });
+    }
+
+
     let jsonObj = x2js.xml_str2json(gpxData);
     console.log(jsonObj);
     function getPTS(arr){
@@ -148,4 +161,29 @@ jQuery(document).ready($=>{
     // console.log(getPTS(jsonObj));
     let points = getPTS(jsonObj);
     var new_line = L.polyline(points, {color: 'salmon'}).addTo(mymap);
+
+
+    $.ajax({
+        url: 'map/Activities/activity_2041180865.gpx',
+        async: false,
+        cache: false,
+        dataType: 'text',
+        success: e => {
+            // console.log(e);
+            gpxData = e;
+        },
+        error: e => console.log(e)
+    });
+    jsonObj = x2js.xml_str2json(gpxData);
+    points = getPTS(jsonObj);
+    new_line = L.polyline(points, {color: 'cyan'}).addTo(mymap);
+
+    jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2157967385.gpx"));
+    points = getPTS(jsonObj);
+    new_line = L.polyline(points, {color: 'jade'}).addTo(mymap);
+
+
+
+
+
 });
