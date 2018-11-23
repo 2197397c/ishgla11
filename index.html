@@ -74,9 +74,14 @@
         </nav>
 
         <main role="main" class="">
-            <form id="addAnimal">
+            <form id="addAnimal" action="">
                 <i id="closeForm" class="fas fa-times"></i>
-                <input type="file"/>
+                <input type="file" id="file"/>
+                <label>Animal Name: <input type="text" name="animalName"/></label>
+                <div class="actions">
+                    <input type="submit" value="Submit"/>
+                    <input type="button" value="Cancel"/>
+                </div>
             </form>
             <script>
                 // function load_home() {
