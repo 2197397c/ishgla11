@@ -106,15 +106,31 @@ div.sidebar-toggle{
 #addAnimal{
     border-radius: 10px;
     display: none;
-    --padding-size: 3rem;
+    --padding-size: 2rem;
     position: absolute;
     padding: var(--padding-size);
     background: white;
-    left: calc(50% - var(--padding-size));
-    top: calc(50% - var(--padding-size));
+    left: calc(45% - var(--padding-size));
+    top: calc(45% - var(--padding-size));
     box-shadow: 0 0 0 100vw rgba(0,0,0,.5);
     z-index: 1;
     transition: .3s;
+    border-top: 5px solid rgba(0,0,0,.6);
+}
+/* Form input styling */
+#addAnimal{
+    /*display: flex;*/
+    flex-direction: column;
+}
+#addAnimal > *{
+    padding-bottom: 1rem;
+}
+#addAnimal .actions{
+    display: flex;
+}
+#addAnimal .actions input:not([type=file]){
+    width: 50%;
+    margin-right:.5rem;
 }
 /* Preventing clicking elsewhere */
 #addAnimal::after{

@@ -10,9 +10,9 @@ jQuery(document).ready($=>{
         $('#expand').css("opacity", "0");
     });
     $('#add').click(e=>{
-        $('#addAnimal').toggle();
+        $('#addAnimal').css("display", "flex");
     });
     $('#closeForm').click(e=>{
-        $('#addAnimal').toggle();
+        $('#addAnimal').css("display", "none");
     });
 });
