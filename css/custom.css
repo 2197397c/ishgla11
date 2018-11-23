@@ -96,6 +96,7 @@ div.sidebar-toggle{
     left: -8px;
     cursor: pointer;
     transition: .5s;
+    z-index: 1;
 }
 /*Extra Chevron again*/
 #expand i::after{

@@ -110,8 +110,6 @@ jQuery(document).ready($=>{
         mymap.fitBounds(circle3.getBounds());
     });
 
-
-
     $("#bounds").click(function(){
         mymap.fitBounds(polyline.getBounds());
     });
