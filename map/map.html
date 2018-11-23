@@ -56,11 +56,11 @@
 			
 			var popup = L.popup();
 
-			function onMapClick(e) {
+			/*function onMapClick(e) {
 				popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
-			}
+			}*/
 
-			mymap.on('click', onMapClick);
+			//mymap.on('click', onMapClick);
 		
 			//Array of latitudes and longitudes for line
 			var arrOfPoints = [
@@ -81,7 +81,7 @@
 				[55.948512665927410125732421875,-4.321618415415287017822265625],
 			];
 			
-			var circle = L.circle([55.948512665927410125732421875, -4.321618415415287017822265625], {
+			var circle2 = L.circle([55.948512665927410125732421875, -4.321618415415287017822265625], {
 				color: '#400080',
 				fillColor: 'purple',
 				fillOpacity: 0.4,
@@ -89,8 +89,21 @@
 			}).addTo(mymap);
 			
 			var polyline = L.polyline(arrOfPoints, {color: 'purple'}).addTo(mymap);
-			// zoom the map to the polyline
-			//mymap.fitBounds(polyline.getBounds());			
+			
+			// zoom the map to the polyline		
+			polyline.on('click', function() {
+				mymap.fitBounds(polyline.getBounds());
+			});
+			
+			circle2.on('click', function() {
+				mymap.fitBounds(circle2.getBounds());
+			});
+			
+			$("#bounds").click(function(){
+				mymap.fitBounds(polyline.getBounds());
+			});
+			
 		</script>
+		<button id="bounds">Bounds</button>
 	</body>
 </html>
