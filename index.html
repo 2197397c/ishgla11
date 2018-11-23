@@ -10,6 +10,11 @@
     <script src="js/xml2json/xml2json.js"></script>
     <script src="js/read_file.js"></script>
     <script src="js/custom.js"></script>
+	<script>
+			$("#bounds").click(function(){
+				mymap.fitBounds(polyline.getBounds());
+			});
+	</script>
 </head>
 <body onload="load_home()">
 
