@@ -1,3 +1,5 @@
+let x2js = new X2JS();
+
 jQuery(document).ready($=>{
 
     /*var map = L.map('map').setView([55.86, -4.25], 13);
@@ -114,4 +116,36 @@ jQuery(document).ready($=>{
         mymap.fitBounds(polyline.getBounds());
     });
 
+
+    let gpxData;
+    $.ajax({
+        url: 'map/Activities/activity_2011170049.gpx',
+        async: false,
+        cache: false,
+        dataType: 'text',
+        success: e => {
+            // console.log(e);
+            gpxData = e;
+        },
+        error: e => console.log(e)
+    });
+    // console.log(gpxData);
+    let jsonObj = x2js.xml_str2json(gpxData);
+    console.log(jsonObj);
+    function getPTS(arr){
+        let temp = [];
+        let n = 0;
+        let data = arr['gpx']['trk']['trkseg']['trkpt'];
+        data.forEach((i,v) => {
+            // console.log(i);
+            temp[n++] = [parseFloat(i['_lat']), parseFloat(i['_lon'])];
+            console.log(data.length -1 );
+        });
+        temp.splice('length', 1);
+        return temp;
+    }
+    console.log(arrOfPoints);
+    // console.log(getPTS(jsonObj));
+    let points = getPTS(jsonObj);
+    var new_line = L.polyline(points, {color: 'salmon'}).addTo(mymap);
 });

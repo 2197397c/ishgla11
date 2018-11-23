@@ -1,6 +1,6 @@
-let x2js = new X2JS();
 jQuery(document).ready($=>{
     const sidebar = $('nav.sidebar');
+    // const mymap = L.map('map');
     $('#collapse').click(()=>{
         sidebar.css("width", "0%");
         $('#expand').css("opacity", "1");
@@ -14,20 +14,5 @@ jQuery(document).ready($=>{
     });
     $('#closeForm').click(e=>{
         $('#addAnimal').toggle();
-    })
-    let gpxData;
-    $.ajax({
-        url: 'map/Activities/activity_1927428247.gpx',
-        async: false,
-        cache: false,
-        dataType: 'text',
-        success: e => {
-            // console.log(e);
-            gpxData = e;
-        },
-        error: e => console.log(e)
     });
-    // console.log(gpxData);
-    let jsonObj = x2js.xml_str2json(gpxData);
-    console.log(jsonObj);
 });
