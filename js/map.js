@@ -111,9 +111,9 @@ jQuery(document).ready($=>{
     });
 
 
-    /*
+
     $("#bounds").click(function(){
         mymap.fitBounds(polyline.getBounds());
-    });*/
+    });
 
-})
+});
