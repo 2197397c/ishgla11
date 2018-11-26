@@ -11,7 +11,7 @@ jQuery(document).ready($=>{
         let points = getPTS(data);
         console.log(points);
         console.log(mymap);
-        polyline = L.polyline(points).addTo(mymap);
+        polyline = L.polyline(points, {color: '#'+Math.floor(Math.random()*16777215).toString(16)}).addTo(mymap);
 
     };
     $('#collapse').click(()=>{
@@ -62,8 +62,11 @@ jQuery(document).ready($=>{
         // console.log("submitted");
         // let data = form.serializeArray();
         fr.readAsText(file);
+        let copy = polyline.getBounds();
         $('#'+name).click(e=>{
-            mymap.fitBounds(polyline.getBounds());
+            mymap.fitBounds(copy);
         });
+        closeForm();
+        clearForms();
     });
 });
