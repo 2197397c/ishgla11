@@ -172,6 +172,10 @@ div.sidebar-toggle{
 }
 .fields input[type=text]{
     width: 50%;
+    margin-left: 1rem;
+}
+.fields input{
+    margin-bottom: 1rem;
 }
 /* Preventing clicking elsewhere */
 #addAnimal::after{
@@ -197,7 +201,7 @@ input[type=submit]{
     padding: .3rem;
     background: black;
 }
-input, input:hover{
+.actions input,.actions input:hover{
     transition: .2s;
     cursor: pointer;
 }
