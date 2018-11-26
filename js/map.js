@@ -67,7 +67,7 @@ let gpxData;
 //let Datas = gpx("map/Activities/activity_2157967385.gpx");
 jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2157967385.gpx"));
 let points = getPTS(jsonObj);
-let new_line = L.polyline(points, {color: 'greenyellow'}).addTo(mymap);
+// let new_line = L.polyline(points, {color: 'blue'}).addTo(mymap);
 
 //Datas = gpx("map/Activities/activity_2041180865.gpx");
 jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_2041180865.gpx"));

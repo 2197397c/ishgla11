@@ -2,12 +2,17 @@ jQuery(document).ready($=>{
     const sidebar = $('nav.sidebar');
     const form = $('#addAnimal');
     const fr = new FileReader();
+    const nav = $('ul.nav.flex-column');
     let file = document.getElementById('file').files[0];
+    let polyline;
     // console.log(file);
     fr.onload = e=>{
         let data = x2js.xml_str2json(e.target.result);
         let points = getPTS(data);
         console.log(points);
+        console.log(mymap);
+        polyline = L.polyline(points).addTo(mymap);
+
     };
     $('#collapse').click(()=>{
         sidebar.css("width", "0%");
@@ -40,15 +45,25 @@ jQuery(document).ready($=>{
         clearForms();
     });
     $('#file').change((e)=>{
-        console.log(e);
+        // console.log(e);
         file = e.currentTarget.files[0];
     });
     form.submit(e=>{
         e.preventDefault();
-        let name = $('input[name=name]').val();
-        console.log(name);
+        let name = $('input[name=animalName]').val();
+        // console.log(name);
+        let html = '\n' +
+            '                    <li class="nav-item">\n' +
+            '                        <a class="nav-link" id="'+name+'" href="#">\n' +
+            '                            '+name+'\n' +
+            '                        </a>\n' +
+            '                    </li>';
+        nav.append(html);
         // console.log("submitted");
         // let data = form.serializeArray();
         fr.readAsText(file);
+        $('#'+name).click(e=>{
+            mymap.fitBounds(polyline.getBounds());
+        });
     });
 });
