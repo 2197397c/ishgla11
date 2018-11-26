@@ -1,3 +1,7 @@
+/* Load Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans}');
+@import url('https://fonts.googleapis.com/css?family=Roboto}');
 /*CSS Variables*/
 :root{
     /*--sidebar-background: #F8F9FA;*/
@@ -15,6 +19,10 @@
     :root{
         --sidebar-width: 35%;
     }
+}
+body{
+    font-family: 'Roboto';
+    /*font-weight: 500;*/
 }
 /*Connal's embed map element styling*/
 #map{
@@ -45,6 +53,8 @@ nav.sidebar{
     max-height: 100vh;
 }
 /*Hover animations menu*/
+nav.sidebar a{
+}
 nav.sidebar a.nav-link:hover{
     background: #F8F9FA;
     transition: .1s;
@@ -54,7 +64,7 @@ nav.sidebar a.nav-link{
     color: black;
 }
 nav.sidebar li:not(:first-child) a:hover{
-    border-left: 3px solid black;
+    /*border-left: 3px solid black;*/
 }
 /*Logo CSS*/
 #logo{
@@ -120,15 +130,19 @@ div.sidebar-toggle{
     border-radius: 10px;
     display: none;
     --padding-size: 2rem;
-    position: absolute;
+    position: fixed;
+    /*padding: calc(2*var(--padding-size)) var(--padding-size);*/
     padding: var(--padding-size);
     background: white;
-    left: calc(45% - var(--padding-size));
-    top: calc(45% - var(--padding-size));
+    left: calc(40% - var(--padding-size));
+    top: calc(40% - var(--padding-size));
     box-shadow: 0 0 0 100vw rgba(0,0,0,.5);
     z-index: 999;
     transition: .3s;
     border-top: 5px solid rgba(0,0,0,1);
+    width: 25%;
+    min-width: 350px;
+    padding-bottom: .3rem;
 }
 /* Form input styling */
 #addAnimal{
@@ -145,11 +159,25 @@ div.sidebar-toggle{
     width: 50%;
     margin-right:.5rem;
 }
+#addAnimal h3{
+    position: absolute;
+    top: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.fields{
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+.fields input[type=text]{
+    width: 50%;
+}
 /* Preventing clicking elsewhere */
 #addAnimal::after{
     position:fixed;
     content: '';
-    width: 100vw; height: 100vh;
+    width: 1000vw; height: 1000vh;
     top: 0; left: 0;
     z-index: -1;
     transition: .3s;
