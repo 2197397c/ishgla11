@@ -57,10 +57,10 @@
                             Bounds
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="collapse" href="#">
-                            <span> <i class="fas fa-chevron-left"></i> Collapse Menu </span></a>
-                    </li>
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" id="collapse" href="#">-->
+                            <!--<span> <i class="fas fa-chevron-left"></i> Collapse Menu </span></a>-->
+                    <!--</li>-->
                 </ul>
 
 
@@ -68,12 +68,15 @@
         </nav>
 
         <nav class="sidebar-popup">
-            <div id="expand" class="sidebar-toggle">
-                <span> <i class="fas fa-chevron-right"></i></span>
-            </div>
+            <!--<div id="expand" class="sidebar-toggle">-->
+                <!--<span> <i class="fas fa-chevron-right"></i></span>-->
+            <!--</div>-->
         </nav>
 
         <main role="main" class="">
+            <div id="expand" class="sidebar-toggle" data-state="on">
+                <i class="fas fa-chevron-left"></i>
+            </div>
             <form id="addAnimal" action="">
                 <i id="closeForm" class="fas fa-times"></i>
                 <input type="file" id="file"/>
