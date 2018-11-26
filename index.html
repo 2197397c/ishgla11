@@ -77,19 +77,14 @@
                 <h3>Add new animal</h3>
                 <i id="closeForm" class="fas fa-times"></i>
                 <div class="fields">
-                    <label>Animal Name: <input type="text" name="animalName"/></label>
-                    <input type="file" id="file"/>
+                    <label>Animal Name: <input required type="text" name="animalName"/></label>
+                    <input type="file" required id="file"/>
                 </div>
                 <div class="actions">
                     <input type="submit" class="submit" value="Submit"/>
                     <input type="button" class="cancel" value="Cancel"/>
                 </div>
             </form>
-            <script>
-                // function load_home() {
-                //     document.getElementById("map").innerHTML='<object type="text/html" data="map/map.html" ></object>';
-                // }
-            </script>
             <div id="map"></div>
 
             <script>
