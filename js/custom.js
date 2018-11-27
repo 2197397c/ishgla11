@@ -5,14 +5,21 @@ jQuery(document).ready($=>{
     const nav = $('ul.nav.flex-column');
     let file = document.getElementById('file').files[0];
     let polyline;
+    let global_name;
     // console.log(file);
     fr.onload = e=>{
         let data = x2js.xml_str2json(e.target.result);
+        console.log(data);
         let points = getPTS(data);
-        console.log(points);
-        console.log(mymap);
         polyline = L.polyline(points, {color: '#'+Math.floor(Math.random()*16777215).toString(16)}).addTo(mymap);
-
+        let copy = polyline.getBounds();
+        console.log(copy);
+        console.log(global_name);
+        $('#'+global_name).click(e=>{
+            mymap.fitBounds(copy);
+        });
+        closeForm();
+        clearForms();
     };
     $('#collapse').click(()=>{
         sidebar.css("width", "0%");
@@ -59,14 +66,7 @@ jQuery(document).ready($=>{
             '                        </a>\n' +
             '                    </li>';
         nav.append(html);
-        // console.log("submitted");
-        // let data = form.serializeArray();
+        global_name = name;
         fr.readAsText(file);
-        let copy = polyline.getBounds();
-        $('#'+name).click(e=>{
-            mymap.fitBounds(copy);
-        });
-        closeForm();
-        clearForms();
     });
 });
