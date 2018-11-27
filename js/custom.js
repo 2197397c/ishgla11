@@ -9,17 +9,15 @@ jQuery(document).ready($=>{
     // console.log(file);
     fr.onload = e=>{
         let data = x2js.xml_str2json(e.target.result);
-        console.log(data);
+        // console.log(data);
         let points = getPTS(data);
         polyline = L.polyline(points, {color: '#'+Math.floor(Math.random()*16777215).toString(16)}).addTo(mymap);
         let copy = polyline.getBounds();
-        console.log(copy);
-        console.log(global_name);
+        // console.log(copy);
+        // console.log(global_name);
         $('#'+global_name).click(e=>{
             mymap.fitBounds(copy);
         });
-        closeForm();
-        clearForms();
     };
     $('#collapse').click(()=>{
         sidebar.css("width", "0%");
@@ -68,5 +66,7 @@ jQuery(document).ready($=>{
         nav.append(html);
         global_name = name;
         fr.readAsText(file);
+        closeForm();
+        clearForms();
     });
 });
