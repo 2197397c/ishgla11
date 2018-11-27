@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Test</title>
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <script src="js/xml2json/xml2json.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     </head>
     <body>
         <h1>Using this to show a few examples of charts</h1>
-        <h3>Bar Chart</h3>
-        <canvas id="barChart" width="400" height="400"></canvas>       
         <h3>Line Chart</h3>
-        <canvas id="lineChart" width="400" height="400"></canvas>   
-        
+        <div class = "chart-container" style="position: relative; width:50%; height:50%;">
+          <canvas id="elevChart" ></canvas>
+        </div>
+
+        <div class = "chart-container" style="position: relative; width:50%; height:50%;">
+          <canvas id="heartChart" ></canvas>
+        </div>
+
     </body>
 
     <footer>
