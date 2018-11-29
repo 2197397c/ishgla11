@@ -5,13 +5,23 @@ jQuery(document).ready($=>{
     const nav = $('ul.nav.flex-column');
     let file = document.getElementById('file').files[0];
     let polyline;
+	let circle;
     let global_name;
     // console.log(file);
     fr.onload = e=>{
         let data = x2js.xml_str2json(e.target.result);
-        // console.log(data);
+        //console.log(data);
         let points = getPTS(data);
-        polyline = L.polyline(points, {color: '#'+Math.floor(Math.random()*16777215).toString(16)}).addTo(mymap);
+		//console.log(points);
+		//console.log(points[points.length - 1][0]);
+		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+        polyline = L.polyline(points, {color: colour}).addTo(mymap);
+		circle = L.circle([points[points.length - 1][0], points[points.length - 1][1]], {
+        color: colour,
+        fillColor: colour,
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(mymap);
         let copy = polyline.getBounds();
         // console.log(copy);
         // console.log(global_name);
