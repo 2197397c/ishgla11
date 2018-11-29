@@ -14,11 +14,12 @@ jQuery(document).ready($=>{
         let points = getPTS(data);
 		//console.log(points);
 		//console.log(points[points.length - 1][0]);
-		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+		var random = Math.floor(Math.random()*16777215)
+		var colour = '#'+random.toString(16);
         polyline = L.polyline(points, {color: colour}).addTo(mymap);
 		circle = L.circle([points[points.length - 1][0], points[points.length - 1][1]], {
         color: colour,
-        fillColor: colour,
+        fillColor: '#'+(random - 1250000).toString(16),
         fillOpacity: 0.5,
         radius: 500
     }).addTo(mymap);
@@ -28,6 +29,7 @@ jQuery(document).ready($=>{
         $('#'+global_name).click(e=>{
             mymap.fitBounds(copy);
         });
+
     };
     $('#collapse').click(()=>{
         sidebar.css("width", "0%");
@@ -62,11 +64,16 @@ jQuery(document).ready($=>{
     $('#file').change((e)=>{
         // console.log(e);
         file = e.currentTarget.files[0];
+		if (!file.name.endsWith(".gpx")) {
+			closeForm();
+			clearForms();
+		}
     });
     form.submit(e=>{
         e.preventDefault();
         let name = $('input[name=animalName]').val();
-        // console.log(name);
+        //console.log(file.name);
+		
         let html = '\n' +
             '                    <li class="nav-item">\n' +
             '                        <a class="nav-link" id="'+name+'" href="#">\n' +
