@@ -39,5 +39,4 @@ jQuery(document).ready($=>{
 
     var marker = L.marker([55.873487, -4.292634]).addTo(mymap);
     marker.bindPopup("<b>Hello world!</b><br>I am <strike>a popup</strike> the Boyd Orr.");
-
 });
