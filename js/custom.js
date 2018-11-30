@@ -107,5 +107,29 @@ jQuery(document).ready($=>{
         drawElevs(getElevPTS(theAnimal['data']), time);
         drawHeart(getHeartRate(theAnimal['data']), time);
 
-    })
+    });
+    $('#defaultSize').click(e=>{
+        $('body').css("font-size", "100%");
+        $('#add').css("font-size", "100%");
+    });
+    $('#largeSize').click(e=>{
+        $('body').css("font-size", "130%");
+        $('#add').css("font-size", "130%");
+    });
+    $('#hugeSize').click(e=>{
+        $('body').css("font-size", "170%");
+        $('#add').css("font-size", "170%");
+    });
+    $('#accessibil').click(e => { toggleAccess() });
+    $('#close').click(e=> toggleAccess());
+    function toggleAccess(){
+        let state =$('#accessibil').attr('data-state');
+        if (state === 'off'){
+            $('#accessForm').show();
+            $('#accessibil').attr('data-state', 'on');
+        } else if (state === 'on'){
+            $('#accessForm').hide();
+            $('#accessibil').attr('data-state', 'off');
+        }
+    }
 });
