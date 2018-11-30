@@ -229,8 +229,17 @@ input[type=button]:hover{
 .nav > button{
     min-width: var(--sidebar-width);
 }
-
-
+.animalPick{
+    width: 80%;
+    height: 100px;
+}
+.pickActions{
+    display: flex;
+    padding: 1rem;
+}
+.pickActions > button{
+    margin: .2rem;
+}
 /* Start of Login Form styling --------------------------------------------------- */
 /* Full-width input fields */
 input[type=text], input[type=password] {
