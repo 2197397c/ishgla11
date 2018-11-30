@@ -67,13 +67,14 @@ jQuery(document).ready($=>{
 		if (!file.name.endsWith(".gpx")) {
 			closeForm();
 			clearForms();
+      alert("Only GPX files are supported.");
 		}
     });
     form.submit(e=>{
         e.preventDefault();
         let name = $('input[name=animalName]').val();
         //console.log(file.name);
-		
+
         let html = '\n' +
             '                    <li class="nav-item">\n' +
             '                        <a class="nav-link" id="'+name+'" href="#">\n' +
