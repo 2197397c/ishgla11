@@ -1,28 +1,81 @@
-var ctx = document.getElementById("barChart");
-var barChart = new Chart(ctx, {
-    type: 'bar',
+//uncomment to gte working in single file
+
+//let x2js = new X2JS();
+/*
+function gpx(file) {
+    let tempData;
+    $.ajax({
+        url: file,
+        async: false,
+        // cache: false,
+        dataType: 'text',
+        success: e => {
+            tempData = e;
+        },
+        error: e => console.log(e)
+    });
+    return tempData;
+}
+*/
+
+function getElevPTS(arr){
+    let temp = [];
+    let n = 0;
+    let data = arr['gpx']['trk']['trkseg']['trkpt'];
+    //console.log(data);
+    data.forEach((i,v) => {
+      //console.log(i);
+        temp[n++] = [parseFloat(i['ele'])];
+    });
+    //temp.splice('length', 1);
+    return temp;
+}
+
+function getHeartRate(arr){
+    let temp = [];
+    let n = 0;
+    let data = arr['gpx']['trk']['trkseg']['trkpt'];
+    //console.log(data);
+    data.forEach((i,v) => {
+      //console.log(i);
+        temp[n++] = [parseFloat(i['extensions']['TrackPointExtension']['hr']['__text'])];
+    });
+    //temp.splice('length', 1);
+    return temp;
+}
+
+function getTimePTS(arr){
+    let temp = [];
+    let n = 0;
+    let data = arr['gpx']['trk']['trkseg']['trkpt'];
+    //console.log(data);
+    data.forEach((i,v) => {
+      //console.log(i);
+        temp[n++] = [(i['time'].slice(11,19))];
+    });
+    //temp.splice('length', 1);
+    return temp;
+}
+
+jsonObj = x2js.xml_str2json(gpx("map/Activities/activity_1939704174.gpx"));
+elevs = getElevPTS(jsonObj);
+times = getTimePTS(jsonObj);
+heartRate = getHeartRate(jsonObj);
+//console.log(points);
+
+var line = document.getElementById("elevChart");
+var lineChart = new Chart(line,{
+    type: "line",
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+        labels: times,
+        datasets:[{
+            label: "Elevation",
+            data: elevs,
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "purple",
+            borderWidth: "2px",
+            pointBackgroundColor: "purple",
+
         }]
     },
     options: {
@@ -30,29 +83,32 @@ var barChart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     beginAtZero:true
-                }
-            }]
+                },
+            }],
         }
     }
-});
+})
 
-
-var line = document.getElementById("lineChart");
+var line = document.getElementById("heartChart");
 var lineChart = new Chart(line,{
     type: "line",
     data: {
+        labels: times,
         datasets:[{
-            data:[55.9415300376713275909423828125,55.95281333662569522857666015625,
-                55.96147754229605197906494140625,55.9685935266315937042236328125,
-                55.98168999888002872467041015625, 55.9902570582926273345947265625,
-                55.9988843835890293121337890625,56.00869867019355297088623046875,
-                56.01124995388090610504150390625,55.99978954531252384185791015625,
-                55.99224306643009185791015625,55.98413868807256221771240234375,
-                55.96955300308763980865478515625,55.96023232676088809967041015625,
-                55.948512665927410125732421875],
-            backgroundColor: "green",
-            borderColor: "purple",
-
+            label: "Heart Rates",
+            data: heartRate,
+            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            borderColor: "rgba(75, 220, 192, 1)",
+            pointRadius:"0",
         }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
+            }],
+        }
     }
 })
