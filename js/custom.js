@@ -19,7 +19,11 @@ jQuery(document).ready($=>{
 		var random = Math.floor(Math.random()*16777215);
 		var colour = '#'+random.toString(16);
         polyline = L.polyline(points, {color: colour}).addTo(mymap);
-        animalPicks[i++] = polyline;
+        let temp = {};
+        temp['line'] = polyline;
+        temp['data'] = data;
+        temp['points'] = points;
+        animalPicks[i++] = temp;
 		circle = L.circle([points[points.length - 1][0], points[points.length - 1][1]], {
         color: colour,
         fillColor: '#'+(random - 1250000).toString(16),
@@ -82,13 +86,13 @@ jQuery(document).ready($=>{
         fr.readAsText(file);
         closeForm();
         clearForms();
-        alert("Only GPX files are supported.");
+        // alert("Only GPX files are supported.");
     });
     $('#findAnimal').click(e=>{
         // console.log(e);
         let i = $('.animalPick option:selected').attr("data-index");
         // console.log(animalPicks[i].getBounds());
-        mymap.fitBounds(animalPicks[i].getBounds());
+        mymap.fitBounds(animalPicks[i]['line'].getBounds());
         // console.log(val);
     });
 });
