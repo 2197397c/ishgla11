@@ -6,7 +6,7 @@
 :root{
     /*--sidebar-background: #F8F9FA;*/
     --sidebar-background: white;
-    --sidebar-width: 250px;
+    --sidebar-width: 300px;
     overflow: hidden;
 }
 /* Responsive design for smaller screen */
@@ -222,7 +222,13 @@ input[type=button]:hover{
     background: #c4c4c4;
     color: black;
 }
-
+/*Fixed Chart Sliding bar lag*/
+.chart-container{
+    min-width: var(--sidebar-width);
+}
+.nav > button{
+    min-width: var(--sidebar-width);
+}
 
 
 /* Start of Login Form styling --------------------------------------------------- */
