@@ -6,19 +6,21 @@
 :root{
     /*--sidebar-background: #F8F9FA;*/
     --sidebar-background: white;
-    --sidebar-width: 20%;
+    --sidebar-width: 250px;
     overflow: hidden;
 }
 /* Responsive design for smaller screen */
 @media screen and (max-width: 1000px){
     :root{
-        --sidebar-width: 30%;
-    }
+    /*--sidebar-width: 30%;*/
+    /*--sidebar-width: 30%;*/
+}
 }
 @media screen and (max-width: 800px){
     :root{
-        --sidebar-width: 35%;
-    }
+    /*--sidebar-width: 35%;*/
+    /*--sidebar-width: 35%;*/
+}
 }
 body{
     font-family: 'Roboto';
@@ -79,9 +81,10 @@ nav.sidebar li:not(:first-child) a:hover{
 /*Minimum width so the text element doesn't collapse*/
 .sidebar a.nav-link{
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     min-width: 200px;
     white-space: nowrap;
+    padding-left: 15%;
 }
 /*Extra Chevron*/
 .fa-chevron-left::after{
