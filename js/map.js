@@ -38,7 +38,7 @@ jQuery(document).ready($=>{
     }).addTo(mymap);
 
     var marker = L.marker([55.873487, -4.292634]).addTo(mymap);
-    var circle = L.circle([55.862344, -4.253426], {
+    /*var circle = L.circle([55.862344, -4.253426], {
         color: 'blue',
         fillColor: '#0020ff',
         fillOpacity: 0.5,
@@ -48,13 +48,13 @@ jQuery(document).ready($=>{
         [55.874143, -4.281878],
         [55.871651, -4.283595],
         [55.872277, -4.281685]
-    ],{color:'red'}).addTo(mymap);
+    ],{color:'red'}).addTo(mymap);*/
 
     marker.bindPopup("<b>Hello world!</b><br>I am <strike>a popup</strike> the Boyd Orr.");
-    circle.bindPopup("I am a circle.");
-    polygon.bindPopup("I am a polygon.");
+    //circle.bindPopup("I am a circle.");
+    //polygon.bindPopup("I am a polygon.");
 
-    var popup = L.popup();
+    //var popup = L.popup();
 
     /*function onMapClick(e) {
         popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
