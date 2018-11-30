@@ -23,7 +23,7 @@ jQuery(document).ready($=>{
         temp['line'] = polyline;
         temp['data'] = data;
         temp['points'] = points;
-        animalPicks[i++] = temp;
+        animalPicks[i] = temp;
 		circle = L.circle([points[points.length - 1][0], points[points.length - 1][1]], {
         color: colour,
         fillColor: '#'+(random - 1250000).toString(16),
@@ -33,9 +33,13 @@ jQuery(document).ready($=>{
         let copy = polyline.getBounds();
         // console.log(copy);
         // console.log(global_name);
-        $('#'+global_name).click(e=>{
-            mymap.fitBounds(copy);
-        });
+        let theAnimal = animalPicks[i];
+        let time = getTimePTS(theAnimal['data']);
+        mymap.fitBounds(theAnimal['line'].getBounds());
+        drawElevs(getElevPTS(theAnimal['data']), time);
+        drawHeart(getHeartRate(theAnimal['data']), time);
+        i++;
+        $('.animalPick option:nth-child('+i+')').attr('selected', 'selected');
 
     };
     $('#collapse').click(()=>{

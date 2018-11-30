@@ -23,7 +23,7 @@
 }
 }
 body{
-    font-family: 'Roboto';
+    font-family: 'Roboto', 'Karla', 'PT Sans';
     /*font-weight: 500;*/
 }
 /*Connal's embed map element styling*/
@@ -308,7 +308,18 @@ span.psw {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
-
+/* Access styling */
+#accessibil{
+    position: absolute;
+    background: white;
+    top: 10px; right: 10px;
+    padding: 5px 10px;
+    font-size: 150%;
+    z-index: 99;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 1px #0000004a;
+}
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
